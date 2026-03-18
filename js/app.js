@@ -165,9 +165,27 @@ async function generatePDF(data) {
 
 // Generate DOCX
 async function generateDOCX(data) {
-    // Using docx library
-    const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } = window.docx;
-    const { Table, TableRow, TableCell, WidthType, BorderStyle } = window.docx;
+    // Check if docx library is loaded
+    if (typeof window.docx === 'undefined') {
+        throw new Error('Thư viện docx chưa được tải. Vui lòng tải lại trang.');
+    }
+    
+    // Access docx classes directly from window.docx
+    const Document = window.docx.Document;
+    const Packer = window.docx.Packer;
+    const Paragraph = window.docx.Paragraph;
+    const TextRun = window.docx.TextRun;
+    const HeadingLevel = window.docx.HeadingLevel;
+    const AlignmentType = window.docx.AlignmentType;
+    const Table = window.docx.Table;
+    const TableRow = window.docx.TableRow;
+    const TableCell = window.docx.TableCell;
+    const WidthType = window.docx.WidthType;
+    
+    // Verify all required classes are available
+    if (!Document || !Packer || !Paragraph || !TextRun) {
+        throw new Error('Thư viện docx chưa được tải đầy đủ. Vui lòng tải lại trang.');
+    }
     
     // Create document
     const doc = new Document({
@@ -257,6 +275,13 @@ async function generateDOCX(data) {
 
 // Helper: Create table
 function createTable(rows) {
+    const Table = window.docx.Table;
+    const TableRow = window.docx.TableRow;
+    const TableCell = window.docx.TableCell;
+    const Paragraph = window.docx.Paragraph;
+    const TextRun = window.docx.TextRun;
+    const WidthType = window.docx.WidthType;
+    
     return new Table({
         rows: rows.map(([label, value]) => 
             new TableRow({
