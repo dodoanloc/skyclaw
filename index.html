@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyClaw - Nhập Thông Tin Cá Nhân</title>
+    <title>SkyClaw - Đăng Ký Thông Tin Hộ Kinh Doanh Agribank</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- FileSaver for DOCX -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <!-- docx library browser build (v7.1 - stable for browser) -->
     <script src="https://unpkg.com/docx@7.1/build/index.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -31,84 +28,95 @@
                 </svg>
                 <span>SkyClaw</span>
             </div>
-            <p class="tagline">Nhập thông tin cá nhân - Xuất file mẫu biểu</p>
+            <p class="tagline">Đăng Ký Thông Tin Hộ Kinh Doanh - Agribank</p>
         </header>
 
         <main class="main-content">
-            <form id="personalForm" class="form-container">
+            <form id="hoKinhDoanhForm" class="form-container">
                 <div class="form-section">
-                    <h2>Thông Tin Cơ Bản</h2>
+                    <h2>I. Thông Tin Cơ Bản</h2>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="fullName">Họ và tên <span class="required">*</span></label>
-                            <input type="text" id="fullName" name="fullName" required placeholder="Nguyễn Văn A">
-                        </div>
-                        <div class="form-group">
-                            <label for="dateOfBirth">Ngày sinh</label>
-                            <input type="date" id="dateOfBirth" name="dateOfBirth">
-                        </div>
-                        <div class="form-group">
-                            <label for="gender">Giới tính</label>
-                            <select id="gender" name="gender">
-                                <option value="">Chọn giới tính</option>
-                                <option value="male">Nam</option>
-                                <option value="female">Nữ</option>
-                                <option value="other">Khác</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="nationality">Quốc tịch</label>
-                            <input type="text" id="nationality" name="nationality" placeholder="Việt Nam">
+                            <label for="tenChiNhanh">Chi nhánh Agribank <span class="required">*</span></label>
+                            <input type="text" id="tenChiNhanh" name="tenChiNhanh" required placeholder="Agribank Chi nhánh...">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-section">
-                    <h2>Thông Tin Liên Lạc</h2>
+                    <h2>II. Thông Tin Hộ Kinh Doanh</h2>
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="email@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại</label>
-                            <input type="tel" id="phone" name="phone" placeholder="0912 345 678">
-                        </div>
                         <div class="form-group full-width">
-                            <label for="address">Địa chỉ</label>
-                            <input type="text" id="address" name="address" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố">
+                            <label for="tenHoKinhDoanh">Tên Hộ kinh doanh <span class="required">*</span></label>
+                            <input type="text" id="tenHoKinhDoanh" name="tenHoKinhDoanh" required placeholder="Tên Hộ kinh doanh">
+                        </div>
+                        <div class="form-group">
+                            <label for="soGiayPhepDkkd">Số giấy phép ĐKKD <span class="required">*</span></label>
+                            <input type="text" id="soGiayPhepDkkd" name="soGiayPhepDkkd" required placeholder="Số ĐKKD">
+                        </div>
+                        <div class="form-group">
+                            <label for="ngayCapDkkd">Ngày cấp ĐKKD <span class="required">*</span></label>
+                            <input type="date" id="ngayCapDkkd" name="ngayCapDkkd" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="noiCapDkkd">Nơi cấp ĐKKD <span class="required">*</span></label>
+                            <input type="text" id="noiCapDkkd" name="noiCapDkkd" required placeholder="Sở Kế hoạch và Đầu tư...">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-section">
-                    <h2>Thông Tin Cá Nhân Khác</h2>
+                    <h2>III. Thông Tin Chủ Hộ</h2>
                     <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="tenChuHo">Tên chủ hộ <span class="required">*</span></label>
+                            <input type="text" id="tenChuHo" name="tenChuHo" required placeholder="Họ và tên chủ hộ">
+                        </div>
                         <div class="form-group">
-                            <label for="idNumber">Số CMND/CCCD</label>
-                            <input type="text" id="idNumber" name="idNumber" placeholder="012345678901">
+                            <label for="soCccd">Số CCCD <span class="required">*</span></label>
+                            <input type="text" id="soCccd" name="soCccd" required placeholder="012345678901">
                         </div>
                         <div class="form-group">
-                            <label for="issueDate">Ngày cấp</label>
-                            <input type="date" id="issueDate" name="issueDate">
+                            <label for="ngayCapCccd">Ngày cấp CCCD <span class="required">*</span></label>
+                            <input type="date" id="ngayCapCccd" name="ngayCapCccd" required>
                         </div>
-                        <div class="form-group full-width">
-                            <label for="issuePlace">Nơi cấp</label>
-                            <input type="text" id="issuePlace" name="issuePlace" placeholder="Công an tỉnh/thành phố">
+                        <div class="form-group">
+                            <label for="noiCapCccd">Nơi cấp CCCD <span class="required">*</span></label>
+                            <input type="text" id="noiCapCccd" name="noiCapCccd" required placeholder="Công an...">
                         </div>
-                        <div class="form-group full-width">
-                            <label for="occupation">Nghề nghiệp</label>
-                            <input type="text" id="occupation" name="occupation" placeholder="Kỹ sư, bác sĩ, giáo viên, ...">
-                        </div>
-                        <div class="form-group full-width">
-                            <label for="workplace">Nơi làm việc/Học tập</label>
-                            <input type="text" id="workplace" name="workplace" placeholder="Công ty, trường học, ...">
+                        <div class="form-group">
+                            <label for="ngayHetHanCccd">Ngày hết hạn CCCD <span class="required">*</span></label>
+                            <input type="date" id="ngayHetHanCccd" name="ngayHetHanCccd" required>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-section">
-                    <h2>Xuất File</h2>
+                    <h2>IV. Địa Chỉ</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="diaChi">Địa chỉ <span class="required">*</span></label>
+                            <input type="text" id="diaChi" name="diaChi" required placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>V. Thông Tin Liên Lạc</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="dienThoai">Điện thoại</label>
+                            <input type="tel" id="dienThoai" name="dienThoai" placeholder="0912 345 678">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>VI. Xuất File</h2>
                     <div class="export-options">
                         <label class="export-option">
                             <input type="radio" name="exportFormat" value="pdf" checked>
@@ -118,7 +126,6 @@
                                     <polyline points="14 2 14 8 20 8"/>
                                     <line x1="16" y1="13" x2="8" y2="13"/>
                                     <line x1="16" y1="17" x2="8" y2="17"/>
-                                    <polyline points="10 9 9 9 8 9"/>
                                 </svg>
                                 <span>PDF</span>
                             </span>
